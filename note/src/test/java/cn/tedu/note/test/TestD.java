@@ -33,4 +33,13 @@ public class TestD {
 		//	new String[]{id1, id2, id3, id4});
 		System.out.println(n);
 	}
+
+	@Test
+	public void testAddStars(){
+		String userId="03590914-a934-4da9-ba4d-b41799f917d1";
+		boolean b = service.addStars(userId, 5);
+		System.out.println(b);
+		b = service.addStars(userId, 6);
+		System.out.println(b);
+	}
 }

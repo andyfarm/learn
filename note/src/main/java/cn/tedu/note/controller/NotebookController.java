@@ -21,4 +21,11 @@ public class NotebookController {
 		List<Map<String,Object>> list = notebookService.listNotebooks(userId);
 		return new JsonResult(list);
 	}
+
+	@RequestMapping("/page.do")
+	@ResponseBody
+	public JsonResult page(String userId, Integer page){
+		List<Map<String, Object>> list = notebookService.listNotebooks(userId, page);
+		return new JsonResult(list);
+	}
 }

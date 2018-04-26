@@ -3,17 +3,27 @@
         "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <mapper namespace="cn.tedu.note.dao.NoteDao">
-    <select id="findNotesByNotebookId" parameterType="string" resultType="map">
+    <select id="findNotesByNotebookId" resultType="map">
         SELECT
-            cn_note_id    AS id,
-            cn_note_title AS title
+        cn_note_id AS id,
+        cn_note_title AS title
         FROM
-            cn_note
-        WHERE
-            cn_notebook_id = #{notebookId} AND
-            cn_note_status_id = '1'
+        cn_note
+        <where>
+            <trim suffixOverrides="AND">
+                <if test="userId !=null">
+                    cn_user_id = #{userId} and
+                </if>
+                <if test="notebookId != null">
+                    cn_notebook_id = #{notebookId} and
+                </if>
+                <if test="statusId != null">
+                    cn_note_status_id = #{statusId}
+                </if>
+            </trim>
+        </where>
         ORDER BY
-            cn_note_last_modify_time DESC
+        cn_note_last_modify_time DESC
     </select>
     <select id="findNoteById" parameterType="string" resultType="cn.tedu.note.entity.Note">
         SELECT
@@ -52,29 +62,34 @@
 
     <update id="updateNote" parameterType="cn.tedu.note.entity.Note">
         UPDATE
-        cn_note
-        SET
-        <if test="notebookId!=null">
-            cn_notebook_id=#{notebookId},
-        </if>
-        <if test="userId!=null">
-            cn_user_id=#{userId},
-        </if>
-        <if test="statusId!=null">
-            cn_note_status_id=#{statusId},
-        </if>
-        <if test="typeId!=null">
-            cn_note_type_id=#{typeId},
-        </if>
-        <if test="title!=null">
-            cn_note_title=#{title},
-        </if>
-        <if test="body!=null">
-            cn_note_body=#{body},
-        </if>
-        cn_note_last_modify_time=#{lastModifyTime}
+            cn_note
+        <set>
+            <trim suffixOverrides=",">
+                <if test="notebookId!=null">
+                    cn_notebook_id=#{notebookId},
+                </if>
+                <if test="userId!=null">
+                    cn_user_id=#{userId},
+                </if>
+                <if test="statusId!=null">
+                    cn_note_status_id=#{statusId},
+                </if>
+                <if test="typeId!=null">
+                    cn_note_type_id=#{typeId},
+                </if>
+                <if test="title!=null">
+                    cn_note_title=#{title},
+                </if>
+                <if test="body!=null">
+                    cn_note_body=#{body},
+                </if>
+                <if test="lastModifyTime != null">
+                    cn_note_last_modify_time=#{lastModifyTime}
+                </if>
+            </trim>
+        </set>
         WHERE
-        cn_note_id = #{id}
+            cn_note_id = #{id}
     </update>
 
     <select id="findDeleteNotesByUserId" parameterType="string" resultType="map">
@@ -95,6 +110,17 @@
             cn_note
         WHERE
             cn_note_id = #{noteId}
+    </delete>
+
+    <delete id="deleteNotes">
+        DELETE FROM cn_note
+        WHERE
+            cn_note_id IN
+            <foreach collection="ids"
+                     item="id"
+                     open="(" separator="," close=")">
+                #{id}
+            </foreach>
     </delete>
 </mapper>
 

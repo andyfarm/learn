@@ -75,9 +75,17 @@ $(function(){
 	$('#can').on('click', '.btn-replay', replayNote);
 
 	startHeartbeat();
+
+	$('#logout').on('click',logout);
 	
 });
- 
+
+function logout() {
+	delCookie('userId');
+
+
+}
+
 function loadPagedNotebooks(){
 	var page = $(document).data('page');
 	var userId = getCookie('userId');

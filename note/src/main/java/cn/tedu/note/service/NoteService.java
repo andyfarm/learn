@@ -15,4 +15,5 @@ public interface NoteService {
 	List<Map<String, Object>> listNotesInTrash(String userId) throws UserNotFoundException;
 	boolean replayNote(String noteId, String notebookId) throws NoteNotFoundException,NotebookNotFoundException;
 	int deleteNotes(String... noteIds) throws NoteNotFoundException;
+	boolean addStars(String userId, int stars) throws UserNotFoundException;
 }
