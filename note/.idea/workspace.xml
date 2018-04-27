@@ -6,30 +6,30 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="921f6f44-3b27-4c50-95b0-42beb4abee22" name="Default" comment="page work">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/aop/TimeAspect.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/dao/StarsDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/entity/Stars.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/StarsMapper.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/tedu/note/test/TestNotebook.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/78869e63-e58f-4c5d-954c-ee8f918acdc0.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/78869e63-e58f-4c5d-954c-ee8f918acdc0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/78869e63-e58f-4c5d-954c-ee8f918acdc0/storage_v2/_src_/schema/sys.zb4BAA.zip" afterPath="$PROJECT_DIR$/.idea/dataSources/78869e63-e58f-4c5d-954c-ee8f918acdc0/storage_v2/_src_/schema/sys.zb4BAA.zip" />
+    <list default="true" id="921f6f44-3b27-4c50-95b0-42beb4abee22" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tedu/note/controller/NotebookController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/controller/NotebookController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tedu/note/dao/NoteDao.java" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/dao/NoteDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tedu/note/dao/NotebookDao.java" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/dao/NotebookDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tedu/note/service/NoteService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/service/NoteService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tedu/note/service/NotebookService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/service/NotebookService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tedu/note/service/impl/NoteServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/service/impl/NoteServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/tedu/note/service/impl/NotebookServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/cn/tedu/note/service/impl/NotebookServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/conf/jdbc.properties" afterPath="$PROJECT_DIR$/src/main/resources/conf/jdbc.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/NoteMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/NoteMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/NotebookMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/NotebookMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/scripts/note.js" afterPath="$PROJECT_DIR$/src/main/webapp/scripts/note.js" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cn/tedu/note/test/TestD.java" afterPath="$PROJECT_DIR$/src/test/java/cn/tedu/note/test/TestD.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/tedu/note/service/NoteService.class" afterPath="$PROJECT_DIR$/target/classes/cn/tedu/note/service/NoteService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/tedu/note/service/impl/NoteServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/cn/tedu/note/service/impl/NoteServiceImpl.class" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/cn/tedu/note/test/TestD.class" afterPath="$PROJECT_DIR$/target/test-classes/cn/tedu/note/test/TestD.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/tedu/note/controller/NotebookController.class" afterPath="$PROJECT_DIR$/target/classes/cn/tedu/note/controller/NotebookController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/tedu/note/dao/NoteDao.class" afterPath="$PROJECT_DIR$/target/classes/cn/tedu/note/dao/NoteDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/tedu/note/dao/NotebookDao.class" afterPath="$PROJECT_DIR$/target/classes/cn/tedu/note/dao/NotebookDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/tedu/note/service/NotebookService.class" afterPath="$PROJECT_DIR$/target/classes/cn/tedu/note/service/NotebookService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/tedu/note/service/impl/NotebookServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/cn/tedu/note/service/impl/NotebookServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/conf/jdbc.properties" afterPath="$PROJECT_DIR$/target/classes/conf/jdbc.properties" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/NoteMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/NoteMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/NotebookMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/NotebookMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/controller/NotebookController.class" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/controller/NotebookController.class" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/controller/UserController.class" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/controller/UserController.class" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/dao/NoteDao.class" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/dao/NoteDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/dao/NotebookDao.class" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/dao/NotebookDao.class" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/service/NoteService.class" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/service/NoteService.class" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/service/NotebookService.class" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/service/NotebookService.class" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/service/impl/NoteServiceImpl.class" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/service/impl/NoteServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/service/impl/NotebookServiceImpl.class" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/cn/tedu/note/service/impl/NotebookServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/conf/jdbc.properties" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/conf/jdbc.properties" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/conf/spring-mvc.xml" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/conf/spring-mvc.xml" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/conf/spring-mybatis.xml" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/conf/spring-mybatis.xml" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/mapper/NoteMapper.xml" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/mapper/NoteMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/classes/mapper/NotebookMapper.xml" afterPath="$PROJECT_DIR$/target/note/WEB-INF/classes/mapper/NotebookMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/target/note/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/note/WEB-INF/web.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -107,8 +107,8 @@
       <file leaf-file-name="note.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/scripts/note.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+            <state relative-caret-position="6">
+              <caret line="195" column="0" lean-forward="true" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -959,7 +959,7 @@
       <workItem from="1524547362105" duration="14219000" />
       <workItem from="1524563539497" duration="3036000" />
       <workItem from="1524619092479" duration="23470000" />
-      <workItem from="1524711457889" duration="13993000" />
+      <workItem from="1524711457889" duration="15378000" />
     </task>
     <task id="LOCAL-00001" summary="workspace commit">
       <created>1524711591479</created>
@@ -968,7 +968,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524711591479</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="page work">
+      <created>1524735489719</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1524735489719</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1004,7 +1011,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87415000" />
+    <option name="totallyTimeSpent" value="88800000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1017,7 +1024,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3431604" sideWeight="0.50858366" order="7" side_tool="true" content_ui="tabs" />
@@ -1036,7 +1042,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900944" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3431604" sideWeight="0.4914163" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3431604" sideWeight="0.4914163" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900944" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900944" sideWeight="0.49785408" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900944" sideWeight="0.49570817" order="13" side_tool="false" content_ui="tabs" />
@@ -1599,8 +1605,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/scripts/note.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+        <state relative-caret-position="6">
+          <caret line="195" column="0" lean-forward="true" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
           <folding />
         </state>
       </provider>
