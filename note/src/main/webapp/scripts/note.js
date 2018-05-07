@@ -12,8 +12,7 @@ $(function(){
 	loadPagedNotebooks();
 	
 	//点击more时候加载下一页数据
-	$('#notebook-list').on(
-			'click','.more', loadPagedNotebooks);
+	$('#notebook-list').on('click','.more', loadPagedNotebooks);
 	
 	//网页加载以后, 立即读取笔记本列表
 	//loadNotebooks();
@@ -21,23 +20,24 @@ $(function(){
 	//on() 方法绑定事件可以区别事件源
 	//click() 方法绑定事件, 无法区别事件源
 	//绑定笔记本列表区域的点击事件
-	$('#notebook-list').on(
-			'click','.notebook', loadNotes);
+	$('#notebook-list').on('click','.notebook', loadNotes);
 	
 	
 	//监听笔记列表中的笔记点击事件,在点击时候加载显示笔记信息
-	$('#note-list').on(
-			'click','.note', loadNote);
+	$('#note-list').on('click','.note', loadNote);
 	
 	$('#note-list').on('click', '#add_note', showAddNoteDialog);
 	
 	//监听新建笔记对话框中的创建笔记按钮
 	$('#can').on('click','.create-note',addNote);
+	$('#can').on('click','.create-notebook',addNotebook);
+	$('#notebook-list').on('click','#add_notebook',showAddNotebookDialog);
 
 	//监听对话框中的关闭和取消按钮
 	//其中 '.close,.cancel' 是组选择器器, 表示
 	//选择 .close 或 .cancel 按钮
-	$('#can').on('click','.close,.cancel',closeDialog)
+
+	$('#can').on('click','.close,.cancel',closeDialog);
 	
 	$('#add_notebook').click(demo);
 	
@@ -46,8 +46,7 @@ $(function(){
 	
 	
 	//绑定笔记子菜单的触发事件
-	$('#note-list').on('click', 
-			'.btn-note-menu', showNoteMenu);
+	$('#note-list').on('click', '.btn-note-menu', showNoteMenu);
 	
 	//监听整体的文档区域, 任何位置点击都要关闭笔记子菜单
 	$(document).click(hideNoteMenu);
@@ -77,8 +76,99 @@ $(function(){
 	startHeartbeat();
 
 	$('#logout').on('click',logout);
-	
+
+	$('#note-list').on('click','.btn_share',shareNote);
+	$('#search_note').keydown(function (event) {
+		var num = event.which;
+		if (num == 13){
+			console.log(13);
+			var url = 'share/find.do';
+			var keyword = $('#search_note').val();
+			console.log(keyword);
+			var data = {keyword:keyword};
+			$.post(url,data,function (result) {
+				console.log(result);
+				if (result.state == SUCCESS){
+					console.log('result');
+                    var ul = $('#share-search ul');
+                    ul.empty();
+
+					var shares = result.data;
+					for (i = 0;i<shares.length;i++){
+						var share = shares[i];
+						var li = shareTemplate.replace('[title]',share.title);
+						li = $(li);
+
+						li.data("shareId",share.id);
+						ul.append(li);
+					}
+					$('#note-list').hide();
+					$('#pc_part_6').show();
+				}else {
+					alert(result.message);
+				}
+            });
+		}
+    })	
 });
+var shareTemplate =
+	'<li class="online more">'+
+    '<a>'+
+    '<i class="fa fa-file-text-o" title="online" rel="tooltip-bottom"></i> [title]<button type="button" class="btn btn-default btn-xs btn_position btn_slide_down btn-note-menu"><i class="fa fa-chevron-down"></i></button>'+
+    '</a>'+
+    '</li>';
+
+function shareNote() {
+	var url = 'share/add.do';
+	var noteId = $(document).data('note').id;
+	var data = {noteId:noteId};
+	$.post(url,data,function (result) {
+		if (result.state == SUCCESS){
+			alert("成功分享！");
+		}else {
+			alert(result.message);
+		}
+    });
+}
+
+function addNotebook() {
+	//ajax
+	console.log('dianji');
+	var url = 'notebook/add.do';
+	var userId = getCookie('userId');
+	var name = $('#input_notebook').val();
+	var data = {userId:userId,name:name};
+	$.post(url,data,function (result) {
+		console.log(result);
+		if (result.state == SUCCESS){
+			var notebook = result.data;
+			var ul = $('#notebook-list ul');
+			var li = notebookTemplate.replace('[name]',notebook.name);
+			li = $(li);
+			li.data('notebookId',notebook.id);
+			ul.find('a').removeClass('checked');
+			li.find('a').addClass('checked');
+
+			ul.prepend(li);
+			closeDialog();
+		}else {
+			alert(result.message);
+		}
+    })
+
+}
+
+function showAddNotebookDialog() {
+	var id = getCookie('userId');
+	if (id){
+		$('#can').load('alert/alert_notebook.html',function () {
+			$('#input_notebook').focus();
+        });
+		$('.opacity_bg').show();
+		return;
+	}
+	alert('must choose one notebook!');
+}
 
 function logout() {
 	delCookie('userId');
@@ -132,7 +222,7 @@ function startHeartbeat(){
 	var url = "user/heartbeat.do";
 	setInterval(function(){
 		$.getJSON(url, function(result){
-			//console.log(result.data);
+			console.log(result.data);
 		});
 	}, 5000);
 }
@@ -389,7 +479,7 @@ function updateNote(){
 				note.title = title;
 				note.body = body;
 				var l = $('#note-list .checked').parent();
-				$('#note-list .checked').remove()
+				$('#note-list .checked').remove();
 				var li = noteTemplate.replace( '[title]', title);
 				var a = $(li).find('a');
 				a.addClass('checked');
@@ -400,7 +490,6 @@ function updateNote(){
 		});
 	}
 }
-
 
 function loadNote(){
 	//获取当前点击的 li 元素
@@ -437,7 +526,6 @@ function showNote(note){
 
 }
 
-
 function closeDialog(){
 	$('.opacity_bg').hide();
 	$('#can').empty();
@@ -451,8 +539,7 @@ function addNote(){
 	var data = {userId:getCookie('userId'),
 		notebookId:notebookId,
 		title:title};
-	//console.log(data);
-	
+
 	$.post(url, data, function(result){
 		if(result.state==SUCCESS){
 			var note=result.data;
@@ -466,7 +553,7 @@ function addNote(){
 			li = $(li);
 			
 			//绑定笔记ID到LI
-			li.data('noteId', note.id)
+			li.data('noteId', note.id);
 
 			//设置选定效果
 			ul.find('a').removeClass('checked');

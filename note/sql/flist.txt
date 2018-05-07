@@ -1,0 +1,16 @@
+log-in
+regist
+show notebooks list
+show notes list
+show note
+new note
+save note
+alert note menu
+move note
+delete note
+show trash bin
+replay deleted note
+check user power
+    heartbeat check session
+performance testing
+file upload download

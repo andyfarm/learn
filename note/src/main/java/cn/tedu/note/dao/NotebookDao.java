@@ -1,5 +1,6 @@
 package cn.tedu.note.dao;
 
+import cn.tedu.note.entity.Notebook;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface NotebookDao {
 		@Param("start") int start,
 		@Param("pageSize") int pageSize,
 		@Param("table") String table);
+
+	int addNotebook(Notebook notebook);
 }

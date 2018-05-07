@@ -1,7 +1,6 @@
 package cn.tedu.note.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Objects;
 
 public class Notebook implements Serializable{
@@ -11,12 +10,12 @@ public class Notebook implements Serializable{
 	private String typeId;
 	private String userId;
 	private String desc;
-	private Timestamp createTime;
+	private long createTime;
 
 	public Notebook() {
 	}
 
-	public Notebook(String id, String name, String typeId, String userId, String desc, Timestamp createTime){
+	public Notebook(String id, String name, String typeId, String userId, String desc, long createTime){
 		this.id = id;
 		this.name = name;
 		this.typeId = typeId;
@@ -65,11 +64,11 @@ public class Notebook implements Serializable{
 		this.desc = desc;
 	}
 
-	public Timestamp getCreateTime() {
+	public long getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Timestamp createTime) {
+	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
 	}
 

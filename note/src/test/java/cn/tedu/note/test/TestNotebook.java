@@ -1,5 +1,6 @@
 package cn.tedu.note.test;
 
+import cn.tedu.note.entity.Notebook;
 import cn.tedu.note.service.NotebookService;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +33,13 @@ public class TestNotebook {
 		}
 
 	}
-
+	@Test
+	public void testAdd(){
+		String userId = "39295a3d-cc9b-42b4-b206-a2e7fab7e77c";
+		String name = "111lpoq";
+		Notebook notebook = service.addNotebook(userId,name);
+		System.out.println(notebook);
+	}
 
 
 }

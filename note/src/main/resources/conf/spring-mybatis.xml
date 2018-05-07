@@ -4,24 +4,14 @@
 	   xmlns:util="http://www.springframework.org/schema/util"
 	   xmlns:tx="http://www.springframework.org/schema/tx"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-
-
-
-
-
-
-
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<!-- 配置 spring-mybatis.xml -->
 	<!-- 读取配置文件 -->
-	<util:properties id="jdbc"
-		location="classpath:conf/jdbc.properties"/> 
+	<util:properties id="jdbc" location="classpath:conf/jdbc.properties"/>
 	
 	<!-- 配置数据库连接池 -->
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close"> 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName"
 			value="#{jdbc.driver}"/>
 		<property name="url"
@@ -35,19 +25,15 @@
 	</bean>
 	
 	<!-- 配置MyBatis的 SessionFactory -->
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource"
-			 ref="dataSource"/>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
 		
-		<property name="mapperLocations"
-			value="classpath:mapper/*.xml"/>
+		<property name="mapperLocations" value="classpath:mapper/*.xml"/>
 
 	</bean>
 	<!-- Mapper接口组件扫描 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" 
-			value="cn.tedu.note.dao"/>
+		<property name="basePackage" value="cn.tedu.note.dao"/>
 	</bean>
 
 	<!-- spring-mybatis.xml -->

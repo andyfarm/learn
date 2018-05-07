@@ -2,7 +2,9 @@ package cn.tedu.note.service.impl;
 
 import cn.tedu.note.dao.NotebookDao;
 import cn.tedu.note.dao.UserDao;
+import cn.tedu.note.entity.Notebook;
 import cn.tedu.note.entity.User;
+import cn.tedu.note.service.NotebookNotFoundException;
 import cn.tedu.note.service.NotebookService;
 import cn.tedu.note.service.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service("notebookService")
 public class NotebookServiceImpl implements NotebookService {
@@ -50,5 +53,31 @@ public class NotebookServiceImpl implements NotebookService {
 		int start = page * pageSize;
 		String table = "cn_notebook";
 		return notebookDao.findNotebooksByPage(userId, start, pageSize, table);
+	}
+
+	@Override
+	public Notebook addNotebook(String userId, String name) throws UserNotFoundException, NotebookNotFoundException {
+		if (userId == null || userId.trim().isEmpty()){
+			throw new UserNotFoundException("no this userId");
+		}
+		User user = userDao.findUserByUserId(userId);
+		if (user == null){
+			throw new UserNotFoundException("no this user");
+		}
+		if (name == null || name.trim().isEmpty()){
+			name = String.valueOf(System.currentTimeMillis());
+		}
+		Notebook notebook = new Notebook();
+		String id = String.valueOf(UUID.randomUUID());
+		long time = System.currentTimeMillis();
+		notebook.setId(id);
+		notebook.setUserId(userId);
+		notebook.setName(name);
+		notebook.setCreateTime(time);
+		int n = notebookDao.addNotebook(notebook);
+		if (n != 1){
+			throw new NotebookNotFoundException("failed save new notebook");
+		}
+		return notebook;
 	}
 }

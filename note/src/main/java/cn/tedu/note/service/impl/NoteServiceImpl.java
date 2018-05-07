@@ -92,7 +92,7 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional()
 	public boolean updateNote(String noteId, String title, String body) {
 		if (noteId == null || noteId.trim().isEmpty()) {
 			throw new NoteNotFoundException("no noteID");

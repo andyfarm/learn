@@ -40,6 +40,15 @@ public class TestD {
 		boolean b = service.addStars(userId, 5);
 		System.out.println(b);
 		b = service.addStars(userId, 6);
+
 		System.out.println(b);
 	}
+	@Test
+	public void testD(){
+		System.out.println("Hello Vim m");
+		System.out.println("[like me OK]");
+		System.out.println();
+
+	}
+
 }

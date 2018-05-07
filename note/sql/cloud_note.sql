@@ -30,9 +30,12 @@ CREATE TABLE `cn_activity` (
 `cn_activity_body` text COMMENT '活动介绍(html片段)',
 `cn_activity_end_time` BIGINT ( 20 ) DEFAULT NULL COMMENT '活动结束时间',
 PRIMARY KEY ( `cn_activity_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+ -- ----------------------------
 -- Records of cn_activity
 -- ----------------------------
+
 INSERT INTO `cn_activity`
 VALUES
 	( '1', '大数据技术', 'rrrrrr', NULL );
@@ -59,7 +62,9 @@ VALUES
 	( '8', 'eeeeeeeee', 'eeeeeeeeeeeeeeeeeeeee', NULL );
 INSERT INTO `cn_activity`
 VALUES
-	( '9', 'wwwwwwwwwwww', 'wwwwwwwwwwwwwww', NULL );-- ----------------------------
+	( '9', 'wwwwwwwwwwww', 'wwwwwwwwwwwwwww', NULL );
+
+ -- ----------------------------
 -- Table structure for `cn_activity_status`
 -- ----------------------------
 DROP TABLE
@@ -73,14 +78,20 @@ CREATE TABLE `cn_activity_status` (
 	PRIMARY KEY ( `cn_activity_status_id` ),
 	KEY `FK_Reference_9` ( `cn_activity_id` ),
 	CONSTRAINT `FK_Reference_9` FOREIGN KEY ( `cn_activity_id` ) REFERENCES `cn_activity` ( `cn_activity_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+ -- ----------------------------
 -- Records of cn_activity_status
 -- ----------------------------
-INSERT INTO `cn_activity_status`
+
+ INSERT INTO `cn_activity_status`
 VALUES
-	( '1', '1', 'normal', 'normal' );-- ----------------------------
+	( '1', '1', 'normal', 'normal' );
+
+ -- ----------------------------
 -- Table structure for `cn_note`
 -- ----------------------------
+
 DROP TABLE
 IF
 	EXISTS `cn_note`;
@@ -99,7 +110,9 @@ CREATE TABLE `cn_note` (
 	KEY `FK_Reference_3` ( `cn_user_id` ),
 	KEY `FK_Reference_7` ( `cn_note_status_id` ),
 	KEY `FK_Reference_8` ( `cn_note_type_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+ -- ----------------------------
 -- Records of cn_note
 -- ----------------------------
 INSERT INTO `cn_note`
@@ -731,9 +744,13 @@ VALUES
 	( 'fsaf-as-df-asdf-as-df-dsa', '6d763ac9-dca3-42d7-a2a7-a08053095c08', '39295a3d-cc9b-42b4-b206-a2e7fab7e77c', '1', NULL, '我的收藏1', '111111', '1402539293420', '1402539293420' );
 INSERT INTO `cn_note`
 VALUES
-	( 'ss19055-30e8-4cdc-bfac-97c6bad9518f', '6d763ac9-dca3-42d7-a2a7-a08053095c08', '39295a3d-cc9b-42b4-b206-a2e7fab7e77c', '1', NULL, '我的收藏2', '2222', '1402539293420', '1402539293420' );-- ----------------------------
+	( 'ss19055-30e8-4cdc-bfac-97c6bad9518f', '6d763ac9-dca3-42d7-a2a7-a08053095c08', '39295a3d-cc9b-42b4-b206-a2e7fab7e77c', '1', NULL, '我的收藏2', '2222', '1402539293420', '1402539293420' );
+
+
 -- Table structure for `cn_notebook`
 -- ----------------------------
+
+
 DROP TABLE
 IF
 	EXISTS `cn_notebook`;
@@ -743,13 +760,16 @@ CREATE TABLE `cn_notebook` (
 	`cn_notebook_type_id` VARCHAR ( 100 ) DEFAULT NULL COMMENT '笔记本类型ID',
 	`cn_notebook_name` VARCHAR ( 500 ) DEFAULT NULL COMMENT '笔记本名',
 	`cn_notebook_desc` text COMMENT '笔记本说明',
-	`cn_notebook_createtime` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+	`cn_notebook_createtime` TIMESTAMP NOT NULL DEFAULT '2000-01-01 01:01:01' ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY ( `cn_notebook_id` ),
 	KEY `FK_Note_User_Reference` ( `cn_user_id` ),
 	KEY `FK_Reference_6` ( `cn_notebook_type_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+ -- ----------------------------
 -- Records of cn_notebook
 -- ----------------------------
+
 INSERT INTO `cn_notebook`
 VALUES
 	( '0037215c-09fe-4eaa-aeb5-25a340c6b39b', '52f9b276-38ee-447f-a3aa-0d54e7a736e4', '5', 'wsf', NULL, '2014-06-27 15:18:59' );
@@ -917,9 +937,12 @@ VALUES
 	( 'f45f368b-6558-426e-a58e-a7b819d29ca9', '52f9b276-38ee-447f-a3aa-0d54e7a736e4', '2', 'recycle', NULL, '2014-06-27 15:18:59' );
 INSERT INTO `cn_notebook`
 VALUES
-	( 'fa8d3d9d-2de5-4cfe-845f-951041bcc461', '524f7440-7283-4b2d-8af5-4a67570e892e', '5', '测试笔记本——3', NULL, '2014-06-27 15:18:59' );-- ----------------------------
+	( 'fa8d3d9d-2de5-4cfe-845f-951041bcc461', '524f7440-7283-4b2d-8af5-4a67570e892e', '5', '测试笔记本——3', NULL, '2014-06-27 15:18:59' );
+
+ -- ----------------------------
 -- Table structure for `cn_notebook_type`
 -- ----------------------------
+
 DROP TABLE
 IF
 	EXISTS `cn_notebook_type`;
@@ -929,7 +952,9 @@ CREATE TABLE `cn_notebook_type` (
 	`cn_notebook_type_name` VARCHAR ( 500 ) DEFAULT NULL COMMENT '笔记本类型名称',
 	`cn_notebook_type_desc` text COMMENT '笔记本类型说明',
 	PRIMARY KEY ( `cn_notebook_type_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+ -- ----------------------------
 -- Records of cn_notebook_type
 -- ----------------------------
 INSERT INTO `cn_notebook_type`
@@ -946,9 +971,13 @@ VALUES
 	( '4', 'push', 'push', '推送' );
 INSERT INTO `cn_notebook_type`
 VALUES
-	( '5', 'normal', 'normal', '正常' );-- ----------------------------
+	( '5', 'normal', 'normal', '正常' );
+
+ -- ----------------------------
 -- Table structure for `cn_note_activity`
 -- ----------------------------
+
+
 DROP TABLE
 IF
 	EXISTS `cn_note_activity`;
@@ -963,9 +992,12 @@ CREATE TABLE `cn_note_activity` (
 	PRIMARY KEY ( `cn_note_activity_id` ),
 	KEY `FK_Reference_4` ( `cn_activity_id` ),
 	KEY `FK_Reference_5` ( `cn_note_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+ -- ----------------------------
 -- Records of cn_note_activity
 -- ----------------------------
+
 INSERT INTO `cn_note_activity`
 VALUES
 	( '', NULL, 'ce997ee1-0adf-4d71-9be9-fe32807c34fb', NULL, NULL, NULL, NULL );
@@ -1079,9 +1111,14 @@ VALUES
 	( 'sssssssssssssssssssssssssssssss', '1', 'ce997ee1-0adf-4d71-9be9-fe32807c34fb', '0', '0', 'ssssssssssssssssssssssssssss', 'ssssssssssssssssssssss' );
 INSERT INTO `cn_note_activity`
 VALUES
-	( 'wwwwwwwwwwwwwwwwwww', '1', 'ce997ee1-0adf-4d71-9be9-fe32807c34fb', '0', '0', '我勒个去', '我勒个去~~~~~' );-- ----------------------------
+	( 'wwwwwwwwwwwwwwwwwww', '1', 'ce997ee1-0adf-4d71-9be9-fe32807c34fb', '0', '0', '我勒个去', '我勒个去~~~~~' );
+
+
+ -- ----------------------------
 -- Table structure for `cn_note_status`
 -- ----------------------------
+
+
 DROP TABLE
 IF
 	EXISTS `cn_note_status`;
@@ -1090,14 +1127,22 @@ CREATE TABLE `cn_note_status` (
 	`cn_note_status_code` VARCHAR ( 100 ) DEFAULT NULL COMMENT '笔记状态Code',
 	`cn_note_status_name` VARCHAR ( 500 ) DEFAULT NULL COMMENT '笔记状态名字',
 	PRIMARY KEY ( `cn_note_status_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+
+ -- ----------------------------
 -- Records of cn_note_status
 -- ----------------------------
+
 INSERT INTO `cn_note_status`
 VALUES
-	( '1', 'normal', 'normal' );-- ----------------------------
+	( '1', 'normal', 'normal' );
+
+
+ -- ----------------------------
 -- Table structure for `cn_note_type`
 -- ----------------------------
+
 DROP TABLE
 IF
 	EXISTS `cn_note_type`;
@@ -1107,14 +1152,25 @@ CREATE TABLE `cn_note_type` (
 	`cn_note_type_name` VARCHAR ( 500 ) DEFAULT NULL COMMENT '笔记本类型名称',
 	`cn_note_type_desc` text COMMENT '笔记本类型说明',
 	PRIMARY KEY ( `cn_note_type_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+
+ -- ----------------------------
 -- Records of cn_note_type
 -- ----------------------------
+
+
+
 INSERT INTO `cn_note_type`
 VALUES
-	( '1', 'normal', 'normal', NULL );-- ----------------------------
+	( '1', 'normal', 'normal', NULL );
+
+
+ -- ----------------------------
 -- Table structure for `cn_share`
 -- ----------------------------
+
+
 DROP TABLE
 IF
 	EXISTS `cn_share`;
@@ -1124,9 +1180,15 @@ CREATE TABLE `cn_share` (
 	`cn_share_body` text COMMENT '共享内容',
 	`cn_note_id` VARCHAR ( 100 ) DEFAULT NULL COMMENT '笔记id',
 	PRIMARY KEY ( `cn_share_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+
+
+ -- ----------------------------
 -- Records of cn_share
 -- ----------------------------
+
+
 INSERT INTO `cn_share`
 VALUES
 	( '009d6943-223e-450d-aa26-3aa25edfc8a4', '1——1', '<p>1——11——11——11——11——11——11——11——11——11——11——11——11——1</p>', 'e633e99d-c8dd-44f3-8d8e-5b0966e0927c' );
@@ -1291,9 +1353,14 @@ VALUES
 	( 'fa79c413-8c5d-478a-9c49-465be836c253', '1——1', '<p>1——11——11——11——11——11——11——11——11——11——11——11——11——1</p>', 'e633e99d-c8dd-44f3-8d8e-5b0966e0927c' );
 INSERT INTO `cn_share`
 VALUES
-	( 'fd015d5d-e13e-429b-8a7c-d099a074e7da', '5', '', '4e26ba27-7d01-4dd0-8ca5-cd679beaffb5' );-- ----------------------------
+	( 'fd015d5d-e13e-429b-8a7c-d099a074e7da', '5', '', '4e26ba27-7d01-4dd0-8ca5-cd679beaffb5' );
+
+
+ -- ----------------------------
 -- Table structure for `cn_user`
 -- ----------------------------
+
+
 DROP TABLE
 IF
 	EXISTS `cn_user`;
@@ -1304,9 +1371,14 @@ CREATE TABLE `cn_user` (
 	`cn_user_token` VARCHAR ( 100 ) DEFAULT NULL COMMENT '令牌',
 	`cn_user_nick` VARCHAR ( 100 ) COMMENT '昵称',
 	PRIMARY KEY ( `cn_user_id` ) 
-) ENGINE = INNODB DEFAULT CHARSET = utf8;-- ----------------------------
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+
+ -- ----------------------------
 -- Records of cn_user
 -- ----------------------------
+
+
 INSERT INTO `cn_user`
 VALUES
 	( '03590914-a934-4da9-ba4d-b41799f917d1', 'zhouj', '55587a910882016321201e6ebbc9f595', NULL, NULL );

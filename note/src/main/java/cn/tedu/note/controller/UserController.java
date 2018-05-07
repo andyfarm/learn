@@ -74,18 +74,13 @@ public class UserController {
 		e.printStackTrace();
 		return new JsonResult(5,e);
 	}
+
 	@ExceptionHandler(UserNameException.class)
 	@ResponseBody
 	public JsonResult handleUserName(UserNameException e){
 		e.printStackTrace();
 		return new JsonResult(6,e);
 	}
-
-
-
-
-
-
 
 
 }
