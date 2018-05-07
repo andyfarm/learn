@@ -1,6 +1,7 @@
 package cn.tedu.note.test;
 
 import cn.tedu.note.service.NoteService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -48,6 +49,7 @@ public class TestD {
 		System.out.println("Hello Vim m");
 		System.out.println("[like me OK]");
 		System.out.println();
+		System.out.println(DigestUtils.md5Hex("你好吗"+"123456"));
 
 	}
 
