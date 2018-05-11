@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns:util="http://www.springframework.org/schema/util"
-	   xmlns:tx="http://www.springframework.org/schema/tx"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-	
-	<!-- 配置 spring-mybatis.xml -->
-	<!-- 读取配置文件 -->
-	<util:properties id="jdbc" location="classpath:conf/jdbc.properties"/>
-	
-	<!-- 配置数据库连接池 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName"
-			value="#{jdbc.driver}"/>
-		<property name="url"
-			value="#{jdbc.url}"/>
-		<property name="username"
-			value="#{jdbc.user}"/>
-		<property name="password"
-			value="#{jdbc.password}"/>
-		<property name="maxActive"
-			value="#{jdbc.maxActive}"/>
-	</bean>
-	
-	<!-- 配置MyBatis的 SessionFactory -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		
-		<property name="mapperLocations" value="classpath:mapper/*.xml"/>
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	</bean>
-	<!-- Mapper接口组件扫描 -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="cn.tedu.note.dao"/>
-	</bean>
 
-	<!-- spring-mybatis.xml -->
-	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"/>
-	</bean>
-	<!-- 设置 注解驱动的事务管理  -->
-	<tx:annotation-driven transaction-manager="txManager"/>
+    <!--<context:property-placeholder location="classpath*:conf/*.properties"/>-->
+
+    <!-- 配置 spring-mybatis.xml -->
+    <!-- 读取配置文件 -->
+    <util:properties id="jdbc" location="classpath:conf/jdbc.properties"/>
+
+    <!-- 配置数据库连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name="driverClassName" value="#{jdbc.driver}"/>
+        <property name="url" value="#{jdbc.url}"/>
+        <property name="username" value="#{jdbc.user}"/>
+        <property name="password" value="#{jdbc.password}"/>
+        <property name="filters" value="#{jdbc.filters}"/>
+
+        <property name="maxActive" value="#{jdbc.maxActive}"/>
+        <property name="initialSize" value="#{jdbc.initialSize}"/>
+    </bean>
+
+    <!-- 配置MyBatis的 SessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+
+    </bean>
+    <!-- Mapper接口组件扫描 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.tedu.note.dao"/>
+    </bean>
+
+    <!-- spring-mybatis.xml -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 设置 注解驱动的事务管理  -->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
 </beans>
 
 

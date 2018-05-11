@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author machengjie
+ */
 public interface NoteDao {
 	List<Map<String,Object>> findNotesByNotebookId(
 		@Param("userId") String userId,

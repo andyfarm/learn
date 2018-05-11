@@ -9,12 +9,16 @@ import cn.tedu.note.service.NotebookService;
 import cn.tedu.note.service.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * @author 马成杰
+ */
 @Service("notebookService")
 public class NotebookServiceImpl implements NotebookService {
 	@Resource
@@ -23,6 +27,7 @@ public class NotebookServiceImpl implements NotebookService {
 	private UserDao userDao;
 
 	@Override
+	@Transactional(rollbackFor = RuntimeException.class, readOnly = true)
 	public List<Map<String, Object>> listNotebooks(String userId) throws UserNotFoundException {
 		if (userId == null || userId.trim().isEmpty()) {
 			throw new UserNotFoundException("ID empty");
@@ -39,6 +44,7 @@ public class NotebookServiceImpl implements NotebookService {
 	private int pageSize;
 
 	@Override
+	@Transactional(rollbackFor = RuntimeException.class, readOnly = true)
 	public List<Map<String, Object>> listNotebooks(String userId, Integer page) throws UserNotFoundException {
 		if (userId == null || userId.trim().isEmpty()) {
 			throw new UserNotFoundException("ID不能空");

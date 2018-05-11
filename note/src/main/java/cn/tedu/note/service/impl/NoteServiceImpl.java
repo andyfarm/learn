@@ -19,6 +19,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * @author 马成杰
+ */
 @Service("noteService")
 public class NoteServiceImpl implements NoteService {
 	@Resource
@@ -31,33 +34,33 @@ public class NoteServiceImpl implements NoteService {
 	private NotebookDao notebookDao;
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = RuntimeException.class, readOnly = true)
 	public List<Map<String, Object>> listNotes(String notebookId) throws NotebookNotFoundException {
-		if (notebookId == null || notebookId.trim().isEmpty()){
+		if (notebookId == null || notebookId.trim().isEmpty()) {
 			throw new NotebookNotFoundException("id empty");
 		}
 		int n = notebookDao.countNotebookById(notebookId);
-		if ( n != 1){
+		if (n != 1) {
 			throw new NotebookNotFoundException("no this notebook");
 		}
-		return noteDao.findNotesByNotebookId(null,notebookId,"1");
+		return noteDao.findNotesByNotebookId(null, notebookId, "1");
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = RuntimeException.class)
 	public Note getNote(String noteId) throws NoteNotFoundException {
-		if (noteId == null || noteId.trim().isEmpty()){
+		if (noteId == null || noteId.trim().isEmpty()) {
 			throw new NoteNotFoundException("id empty");
 		}
 		Note note = noteDao.findNoteById(noteId);
-		if (note == null){
+		if (note == null) {
 			throw new NoteNotFoundException("no this note");
 		}
 		return note;
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = RuntimeException.class)
 	public Note addNote(String userId, String notebookId, String title) throws UserNotFoundException, NotebookNotFoundException {
 		if (userId == null || userId.trim().isEmpty()) {
 			throw new UserNotFoundException("no this userId");
@@ -81,18 +84,18 @@ public class NoteServiceImpl implements NoteService {
 		String typeId = "0";
 		String body = "";
 		long time = System.currentTimeMillis();
-		Note note = new Note(id,notebookId,userId,statusId,typeId,title,body,time,time);
+		Note note = new Note(id, notebookId, userId, statusId, typeId, title, body, time, time);
 		n = noteDao.addNote(note);
 		if (n != 1) {
 			throw new NoteNotFoundException("failed to save");
 		}
 
-		addStars(userId,2);
+		addStars(userId, 2);
 		return note;
 	}
 
 	@Override
-	@Transactional()
+	@Transactional(rollbackFor = RuntimeException.class)
 	public boolean updateNote(String noteId, String title, String body) {
 		if (noteId == null || noteId.trim().isEmpty()) {
 			throw new NoteNotFoundException("no noteID");
@@ -115,7 +118,7 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = RuntimeException.class)
 	public boolean moveNote(String noteId, String notebookId) throws NoteNotFoundException, NotebookNotFoundException {
 		if (noteId == null || noteId.trim().isEmpty()) {
 			throw new NoteNotFoundException("id empty");
@@ -141,7 +144,7 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = RuntimeException.class)
 	public boolean deleteNote(String noteId) throws NoteNotFoundException {
 		if (noteId == null || noteId.trim().isEmpty()) {
 			throw new NoteNotFoundException("no noteID");
@@ -159,7 +162,7 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
+	@Transactional(rollbackFor = RuntimeException.class, readOnly = true)
 	public List<Map<String, Object>> listNotesInTrash(String userId) throws UserNotFoundException {
 		if (userId == null || userId.trim().isEmpty()) {
 			throw new UserNotFoundException("no this userId");
@@ -172,7 +175,7 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = RuntimeException.class)
 	public boolean replayNote(String noteId, String notebookId) throws NoteNotFoundException, NotebookNotFoundException {
 		if (noteId == null || noteId.trim().isEmpty()) {
 			throw new NoteNotFoundException("id empty");
@@ -201,11 +204,11 @@ public class NoteServiceImpl implements NoteService {
 
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = RuntimeException.class)
 	public int deleteNotes(String... noteIds) throws NoteNotFoundException {
 		for (String noteId : noteIds) {
 			int n = noteDao.deleteNoteById(noteId);
-			if (n != 1){
+			if (n != 1) {
 				throw new NoteNotFoundException("wrong id");
 			}
 		}
@@ -213,7 +216,7 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = RuntimeException.class)
 	public boolean addStars(String userId, int stars) throws UserNotFoundException {
 		if (userId == null || userId.trim().isEmpty()) {
 			throw new UserNotFoundException("ID空");
